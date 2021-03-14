@@ -1,17 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app id="app">
+    <v-main>
+      <Timer :storage="timerStorage" />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Timer from './components/Timer.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Timer
+  },
+  data() {
+    let timerStorage = {};
+    try {
+      timerStorage = JSON.parse(localStorage.timer);
+    } catch (e) {}
+    return {
+      timerStorage
+    }
+  },
+  watch: {
+    timerStorage() {
+      localStorage.timer = JSON.stringify(this.timerStorage);
+    }
   }
 }
 </script>
