@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
 
+import "./assets/styles.css";
 import App from './App.vue';
 
 Vue.config.productionTip = false;
